@@ -4,6 +4,11 @@
 
 -- COMMAND ----------
 
+CREATE SCHEMA IF NOT EXISTS training;
+USE SCHEMA training;
+
+-- COMMAND ----------
+
 CREATE TABLE employees
   (id INT, name STRING, salary DOUBLE);
 
@@ -65,7 +70,7 @@ DESCRIBE DETAIL employees
 
 -- COMMAND ----------
 
--- MAGIC %fs ls 'dbfs:/user/hive/warehouse/employees'
+-- MAGIC %fs ls 'dbfs:/user/hive/warehouse/training.db/employees/'
 
 -- COMMAND ----------
 
@@ -84,7 +89,7 @@ SELECT * FROM employees
 
 -- COMMAND ----------
 
--- MAGIC %fs ls 'dbfs:/user/hive/warehouse/employees'
+-- MAGIC %fs ls 'dbfs:/user/hive/warehouse/training.db/employees'
 
 -- COMMAND ----------
 
@@ -105,11 +110,15 @@ DESCRIBE HISTORY employees
 
 -- COMMAND ----------
 
--- MAGIC %fs ls 'dbfs:/user/hive/warehouse/employees/_delta_log'
+-- MAGIC %fs ls 'dbfs:/user/hive/warehouse/training.db/employees/_delta_log/'
 
 -- COMMAND ----------
 
--- MAGIC %fs head 'dbfs:/user/hive/warehouse/employees/_delta_log/00000000000000000005.json'
+-- MAGIC %fs head 'dbfs:/user/hive/warehouse/training.db/employees/_delta_log/00000000000000000006.json'
+
+-- COMMAND ----------
+
+OPTIMIZE employees
 
 -- COMMAND ----------
 

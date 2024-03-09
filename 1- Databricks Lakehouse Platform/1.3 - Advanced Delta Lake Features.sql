@@ -5,6 +5,10 @@
 
 -- COMMAND ----------
 
+USE SCHEMA training;
+
+-- COMMAND ----------
+
 DESCRIBE HISTORY employees
 
 -- COMMAND ----------
